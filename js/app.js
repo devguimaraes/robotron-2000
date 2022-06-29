@@ -1,6 +1,15 @@
-/* const robo = document.querySelector('.robo');
+const robo = document.querySelector('[data-trocaCor]');
 
-robo.addEventListener('click', () => console.log('Oi, eu sou o robotrom')); */
+function corAleatoria() {
+	const cores = ['Amarelo', 'Azul', 'Branco', 'Rosa', 'Vermelho'];
+	return cores[Math.floor(Math.random() * cores.length)];
+}
+
+robo.addEventListener('click', () => {
+	const imgRobo = document.querySelector('[data-imgRobo]');
+	imgRobo.src = `./img/${corAleatoria()}.png`;
+});
+
 const pecasRobo = {
 	bracos: {
 		forca: 29,
@@ -50,7 +59,6 @@ function atualizaEstatisticas(params) {
 	/* console.log(pecasRobo[params]); */
 
 	estatisticas.forEach((el) => {
-		console.log([el.dataset.estatistica]);
 		el.textContent =
 			parseInt(el.textContent, 10) + pecasRobo[params][el.dataset.estatistica];
 	});
